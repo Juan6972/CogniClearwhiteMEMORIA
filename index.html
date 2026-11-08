@@ -103,10 +103,11 @@
       list-style: none;
     }
 
-    .menu span {
+    .menu a {
       color: var(--cinza);
       font-size: 12px;
       font-weight: 600;
+      text-decoration: none;
     }
 
     .menu [aria-current="page"] {
@@ -390,11 +391,11 @@
 
       <nav aria-label="Main navigation">
         <ul class="menu">
-          <li><span aria-current="page">Home</span></li>
-          <li><span>Articles</span></li>
-          <li><span>Nutrition</span></li>
-          <li><span>Lifestyle</span></li>
-          <li><span>Contact</span></li>
+          <li><a href="#conteudo" aria-current="page">Home</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#nutrition">Nutrition</a></li>
+          <li><a href="#lifestyle">Lifestyle</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -433,7 +434,7 @@
       </div>
 
 
-      <div class="conteudo">
+      <div class="conteudo" id="articles">
         <h2>Make movement part of your routine</h2>
         <p>
           A balanced routine can begin with small choices. Walking, taking stretching breaks and enjoying gentle physical activity are ways to bring movement into everyday life. Choose activities you enjoy, start gradually and respect your own limits and individual needs.
@@ -463,7 +464,7 @@
           This content does not replace individual assessment, diagnosis or advice from healthcare professionals.
         </div>
 
-        <h2>Balanced eating and everyday energy</h2>
+        <h2 id="nutrition">Balanced eating and everyday energy</h2>
         <p>Food provides energy and nutrients for everyday activities. Variety across food groups can contribute to a more diverse intake without requiring special ingredients. Grains, pulses, vegetables, fruit and sources of protein can form part of meals adapted to each person's food culture, preferences and needs.</p>
         <p>How energetic you feel during the day depends on several factors, including rest, activity and individual circumstances. Noticing meal times and how comfortable you feel after eating may help you find a convenient pattern. Avoid attributing persistent tiredness to a single food or seeking quick solutions through restrictions without professional guidance.</p>
         <p>Simple preparations, such as soup, cooked vegetables and meals using seasonal ingredients, can make planning easier. Frozen and preserved foods can also have a place in your routine, taking their composition and storage conditions into account. Consider your overall eating pattern rather than labelling each individual food as good or bad.</p>
@@ -476,7 +477,7 @@
         <p>Water can accompany meals and be available while travelling or exercising. A clean, accessible reusable bottle can serve as a reminder. The appropriate amount depends on the circumstances, including temperature, diet, exertion and clinical guidance; no single target describes every situation.</p>
         <p>On warmer days or during greater exertion, pay attention to your comfort and opportunities to drink and rest. People with specific needs should discuss hydration with a healthcare professional. Sugary and alcoholic drinks should not be used as a regular substitute for water, and special products are not essential to an ordinary routine.</p>
 
-        <h2>Regular physical activity</h2>
+        <h2 id="lifestyle">Regular physical activity</h2>
         <p>Consistency can develop through enjoyable, accessible activities. Walking, dancing, cycling or adapted exercises are possibilities, depending on your abilities and available resources. Combining movement with company or a regular journey may help maintain interest without turning every session into a performance obligation.</p>
         <p>Alternating effort and rest allows you to adapt activity to your routine. Increases in duration or intensity should be gradual and appropriate to your individual circumstances. Pain, feeling unwell or unusual discomfort are reasons to stop and seek advice when needed. The aim is a sustainable relationship with movement, without promises of identical results for everyone.</p>
 
@@ -511,9 +512,22 @@
             <p>
               Dietary supplement in a dropper bottle. Check the ingredients, directions and purchase terms on the seller's page. Supplements do not replace a varied, balanced diet.
             </p>
+            <section class="nota" aria-labelledby="health-notice-title">
+              <h3 id="health-notice-title">Health disclaimer</h3>
+              <p>This website provides general information only and does not offer medical advice. CogniClear is a dietary supplement, not a medicine. It is not intended to diagnose, treat, cure or prevent any disease. Supplements do not replace a varied, balanced diet or a healthy lifestyle, and individual experiences may vary.</p>
+              <p>Consult a qualified healthcare professional before using a supplement, especially if you are pregnant, breastfeeding, taking medication or have a medical condition. Follow the product label and do not exceed the recommended serving. Keep out of reach of children.</p>
+            </section>
+            <section aria-labelledby="ingredients-title">
+              <h3 id="ingredients-title">Ingredients and label information</h3>
+              <p>Check the complete ingredient list, amounts per serving, allergen information and warnings on the current product label before buying or using CogniClear. A verified ingredient list has not yet been provided for this page. The nutrients discussed in the article above are general dietary information and are not a statement of this product's composition.</p>
+            </section>
             <a href="https://order.wealthpay.io/ms12lacy18e1?hid=b2lkPW9mZl8zNTIyNjA0JmFpZD1hZmZfODQ2ODY4NiZ1aWQ9YmxfNjQyMTY0MQ%3D%3D&amp;affid=aff_8468686" target="_blank" rel="sponsored noopener noreferrer" aria-label="Buy now at the partner store (opens in a new tab)" style="display:inline-block;max-width:100%;margin-top:18px;padding:12px 24px;border-radius:5px;background:var(--azul);color:var(--branco);font-size:15px;font-weight:700;text-align:center;text-decoration:none;">Buy Now</a>
           </div>
         </aside>
+        <section id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact and purchase support</h2>
+          <p>For product ingredients, suitability questions, orders, delivery or returns, use the seller's customer-support details on the partner store or your order confirmation. This informational website does not process orders or provide medical consultations.</p>
+        </section>
       </div>
     </article>
   </main>
@@ -571,5 +585,22 @@
       </div>
     </div>
   </footer>
+  <script>
+    function openLinkedDetails() {
+      var section = document.getElementById(window.location.hash.slice(1));
+      if (section && section.tagName === "DETAILS") {
+        section.open = true;
+        section.scrollIntoView();
+      }
+    }
+    window.addEventListener("hashchange", openLinkedDetails);
+    window.addEventListener("DOMContentLoaded", openLinkedDetails);
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function () {
+        var section = document.getElementById(link.getAttribute("href").slice(1));
+        if (section && section.tagName === "DETAILS") section.open = true;
+      });
+    });
+  </script>
 </body>
 </html>
